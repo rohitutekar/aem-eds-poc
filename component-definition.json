@@ -251,6 +251,17 @@
           }
         },
         {
+          "title": "JLR Design System",
+          "id": "jlr-design-system",
+          "plugins": {
+            "da": {
+              "name": "jlr-design-system",
+              "rows": 1,
+              "columns": 1
+            }
+          }
+        },
+        {
           "title": "Quote",
           "id": "quote",
           "model": "quote",

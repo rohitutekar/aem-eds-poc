@@ -1,0 +1,13 @@
+/*
+ * Block-level wrapper styles. Component styling itself comes from the vendored
+ * dist/eds-poc.css (imported below), which carries @jlr/tokens + @jlr/ui-react CSS.
+ */
+@import url('./dist/eds-poc.css');
+
+.jlr-design-system.block {
+  isolation: isolate;
+}
+
+.jlr-design-system .jlr-ds-root {
+  display: block;
+}
