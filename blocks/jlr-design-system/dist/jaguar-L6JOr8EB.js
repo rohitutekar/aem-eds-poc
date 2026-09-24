@@ -1,4 +1,4 @@
-import { i as e, n as t, t as n } from "./jsx-runtime-C2kUopEs.js";
+import { i as e, n as t, t as n } from "./jsx-runtime-CvRU0VyQ.js";
 //#region ../../packages/icons/src/custom/brands/jaguar/ChevronIcon.tsx
 var r = /* @__PURE__ */ e(t(), 1), i = n(), a = (0, r.forwardRef)(function({ className: e, width: t = 14, height: n = 14, ...r }, a) {
 	return /* @__PURE__ */ (0, i.jsx)("svg", {
