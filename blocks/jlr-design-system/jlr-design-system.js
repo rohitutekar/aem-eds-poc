@@ -9,7 +9,7 @@
  * with the absolute CDN URL and drop the vendored ./dist folder.
  */
 export default async function decorate(block) {
-  const { mount } = await import('./dist/eds-poc.js');
+  const { mount } = await import('../jlr-shared/dist/eds-poc.js');
   const container = document.createElement('div');
   container.className = 'jlr-ds-root';
   block.replaceChildren(container);
