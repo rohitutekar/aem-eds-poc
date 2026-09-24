@@ -11,3 +11,19 @@
 .jlr-design-system .jlr-ds-root {
   display: block;
 }
+
+/*
+ * styles/styles.css defines unlayered `a:any-link`/`button` rules using
+ * --link-color (#3b63fb). Tailwind's @jlr/tokens CSS is emitted inside
+ * @layer, and per the CSS Cascade Layers spec any unlayered author rule
+ * always beats layered rules regardless of specificity - so the host's
+ * blue bled through every link/button in the mounted subtree. Re-pointing
+ * the same custom properties the host rule reads (rather than fighting
+ * the layer/specificity order) lets that rule resolve to brand tokens.
+ */
+.jlr-design-system .jlr-ds-root {
+  --link-color: var(--jlr-color-brand, #0c121c);
+  --link-hover-color: var(--jlr-color-brand, #0c121c);
+  --background-color: var(--jlr-color-surface, #fff);
+  --text-color: var(--jlr-color-text-primary, #0c121c);
+}
