@@ -1,3 +1,9 @@
+/*
+ * Component styling comes from the shared vendored dist/eds-poc.css, which
+ * carries @jlr/tokens + @jlr/ui-react CSS (Tailwind utilities included).
+ */
+@import url('../jlr-shared/dist/eds-poc.css');
+
 /* see blocks/header/header.css for why these custom properties are rescoped */
 .footer.block {
   --link-color: var(--jlr-color-brand, #0c121c);

@@ -1,4 +1,10 @@
 /*
+ * Component styling comes from the shared vendored dist/eds-poc.css, which
+ * carries @jlr/tokens + @jlr/ui-react CSS (Tailwind utilities included).
+ */
+@import url('../jlr-shared/dist/eds-poc.css');
+
+/*
  * styles/styles.css defines unlayered `a:any-link`/`button` rules using
  * --link-color (#3b63fb), which beats our Tailwind-layered CSS regardless
  * of specificity (unlayered author styles always win over @layer'd ones).
