@@ -1,3 +1,11 @@
+/* see blocks/header/header.css for why these custom properties are rescoped */
+.footer.block {
+  --link-color: var(--jlr-color-brand, #0c121c);
+  --link-hover-color: var(--jlr-color-brand, #0c121c);
+  --background-color: var(--jlr-color-surface, #fff);
+  --text-color: var(--jlr-color-text-primary, #0c121c);
+}
+
 footer {
   background-color: var(--light-color);
   font-size: var(--body-font-size-xs);

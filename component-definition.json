@@ -251,11 +251,11 @@
           }
         },
         {
-          "title": "JLR Design System",
-          "id": "jlr-design-system",
+          "title": "JLR Sample",
+          "id": "jlr-sample",
           "plugins": {
             "da": {
-              "name": "jlr-design-system",
+              "name": "jlr-sample",
               "rows": 1,
               "columns": 1
             }

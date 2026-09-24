@@ -1,3 +1,17 @@
+/*
+ * styles/styles.css defines unlayered `a:any-link`/`button` rules using
+ * --link-color (#3b63fb), which beats our Tailwind-layered CSS regardless
+ * of specificity (unlayered author styles always win over @layer'd ones).
+ * Re-pointing the same custom properties the host rule reads resolves it
+ * to brand tokens instead of fighting the layer/specificity order.
+ */
+.header.block {
+  --link-color: var(--jlr-color-brand, #0c121c);
+  --link-hover-color: var(--jlr-color-brand, #0c121c);
+  --background-color: var(--jlr-color-surface, #fff);
+  --text-color: var(--jlr-color-text-primary, #0c121c);
+}
+
 /* header and nav layout */
 header .nav-wrapper {
   background-color: var(--background-color);

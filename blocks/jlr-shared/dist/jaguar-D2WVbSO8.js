@@ -1,6 +1,6 @@
-import { i as e, n as t, t as n } from "./jsx-runtime-CvRU0VyQ.js";
+import { dt as e, pt as t, st as n } from "./src-CgYYaxWK.js";
 //#region ../../packages/icons/src/custom/brands/jaguar/ChevronIcon.tsx
-var r = /* @__PURE__ */ e(t(), 1), i = n(), a = (0, r.forwardRef)(function({ className: e, width: t = 14, height: n = 14, ...r }, a) {
+var r = /* @__PURE__ */ t(e(), 1), i = n(), a = (0, r.forwardRef)(function({ className: e, width: t = 14, height: n = 14, ...r }, a) {
 	return /* @__PURE__ */ (0, i.jsx)("svg", {
 		ref: a,
 		xmlns: "http://www.w3.org/2000/svg",
