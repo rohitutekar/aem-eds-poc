@@ -1,1 +1,4 @@
 helix-importer-ui
+blocks/jlr-shared/dist/**
+plugins/experimentation/**
+scripts/sidekick.js

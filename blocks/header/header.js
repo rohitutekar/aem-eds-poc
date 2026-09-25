@@ -7,4 +7,3 @@ export default async function decorate(block) {
   const { mountHeader } = await import('../jlr-shared/dist/header.js');
   mountHeader(block);
 }
-

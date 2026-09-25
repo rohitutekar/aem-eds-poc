@@ -4,7 +4,6 @@ import { loadFragment } from '../fragment/fragment.js';
 function toId(value) {
   return value.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
-
 function getSections(fragment) {
   const sections = [...fragment.querySelectorAll(':scope > .section')];
   return sections.length ? sections : [...fragment.children];
@@ -93,8 +92,6 @@ export default async function decorate(block) {
     const fragment = await loadFragment(footerPath);
     mountFooter(block, 'range-rover', parseFooterContent(fragment));
   } catch (error) {
-    console.error('[footer] failed to load authored footer content', error);
     mountFooter(block);
   }
 }
-

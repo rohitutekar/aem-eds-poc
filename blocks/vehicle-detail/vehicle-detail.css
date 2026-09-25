@@ -2,6 +2,7 @@
 
 .vehicle-detail.block {
   isolation: isolate;
+
   --link-color: var(--jlr-color-brand, #0c121c);
   --link-hover-color: var(--jlr-color-brand, #0c121c);
   --background-color: var(--jlr-color-surface, #fff);
