@@ -44,11 +44,37 @@ function parseLines(section) {
 }
 
 function parseFooterContent(fragment) {
+  const socialSection = getContentSection(fragment, 'social links');
+  const footerSection = getContentSection(fragment, 'footer links');
+  const disclaimerSection = getContentSection(fragment, 'disclaimers');
+  const legalSection = getContentSection(fragment, 'legal');
+
+  if (socialSection || footerSection || disclaimerSection || legalSection) {
+    return {
+      socialLinks: parseLinks(socialSection),
+      footerLinks: parseLinks(footerSection),
+      disclaimers: parseDisclaimers(disclaimerSection),
+      legalLines: parseLines(legalSection),
+    };
+  }
+
+  const paragraphs = [...fragment.querySelectorAll('p')];
+  const disclaimers = paragraphs
+    .map((paragraph) => paragraph.textContent.trim())
+    .map((text) => {
+      const match = text.match(/^(\*1|\*{1,2})\s*/);
+      return match ? { marker: match[1], text: text.slice(match[0].length) } : null;
+    })
+    .filter(Boolean);
+
   return {
-    socialLinks: parseLinks(getContentSection(fragment, 'social links')),
-    footerLinks: parseLinks(getContentSection(fragment, 'footer links')),
-    disclaimers: parseDisclaimers(getContentSection(fragment, 'disclaimers')),
-    legalLines: parseLines(getContentSection(fragment, 'legal')),
+    socialLinks: [],
+    footerLinks: parseLinks(fragment),
+    disclaimers,
+    legalLines: paragraphs
+      .filter((paragraph) => !paragraph.querySelector('a') && !/^(\*1|\*{1,2})\s*/.test(paragraph.textContent.trim()))
+      .map((paragraph) => paragraph.textContent.trim())
+      .filter(Boolean),
   };
 }
 
