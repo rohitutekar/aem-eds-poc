@@ -1,0 +1,13 @@
+@import url('../jlr-shared/dist/eds-poc.css');
+
+.vehicle-detail.block {
+  isolation: isolate;
+  --link-color: var(--jlr-color-brand, #0c121c);
+  --link-hover-color: var(--jlr-color-brand, #0c121c);
+  --background-color: var(--jlr-color-surface, #fff);
+  --text-color: var(--jlr-color-text-primary, #0c121c);
+}
+
+.vehicle-detail .jlr-ds-root {
+  display: block;
+}

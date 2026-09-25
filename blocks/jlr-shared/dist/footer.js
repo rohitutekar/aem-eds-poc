@@ -195,96 +195,29 @@ function g({ content: e }) {
 }
 //#endregion
 //#region src/mount-footer.tsx
-var _ = n(), v = {
-	socialLinks: [
-		{
-			id: "instagram",
-			name: "Instagram",
-			url: "#"
-		},
-		{
-			id: "tiktok",
-			name: "TikTok",
-			url: "#"
-		},
-		{
-			id: "facebook",
-			name: "Facebook",
-			url: "#"
-		},
-		{
-			id: "youtube",
-			name: "YouTube",
-			url: "#"
-		},
-		{
-			id: "x",
-			name: "X",
-			url: "#"
-		}
-	],
-	footerLinks: [
-		{
-			id: "imprint",
-			name: "Imprint",
-			url: "#"
-		},
-		{
-			id: "general-terms-of-use",
-			name: "General Terms of Use",
-			url: "#"
-		},
-		{
-			id: "privacy-policy",
-			name: "Privacy Policy",
-			url: "#"
-		},
-		{
-			id: "cookie-policy",
-			name: "Cookie Policy",
-			url: "#"
-		},
-		{
-			id: "product-safety-ordinance",
-			name: "Product Safety Ordinance",
-			url: "#"
-		},
-		{
-			id: "accessibility-statement",
-			name: "Accessibility Statement",
-			url: "#"
-		}
-	],
-	disclaimers: [
-		{
-			marker: "*",
-			text: "From the 1st of September 2017, certain new cars will be type-approved according to the World Harmonised Light Vehicle Test Procedure (WLTP), a new, more realistic test procedure for measuring fuel consumption and CO2 emissions."
-		},
-		{
-			marker: "**",
-			text: "The images shown are partly digital visualizations and may not correspond to the model offered."
-		},
-		{
-			marker: "*1",
-			text: "The figures given have been determined in accordance with the prescribed EU measurement procedure. A vehicle's actual range may vary depending on various factors."
-		}
-	],
-	legalLines: ["All rights reserved. © 2026 Jaguar Land Rover Limited", "Registered Office: Abbey Road, Whitley, Coventry, CV3 4LF"]
-};
-function y({ brand: t }) {
+var _ = n();
+function v({ brand: t, content: n }) {
 	return /* @__PURE__ */ (0, c.jsx)(e, {
 		brand: t,
-		children: /* @__PURE__ */ (0, c.jsx)(g, { content: v })
+		children: /* @__PURE__ */ (0, c.jsx)(g, { content: n })
 	});
 }
-var b = /* @__PURE__ */ new WeakMap();
-function x(e, t = "range-rover") {
-	let n = b.get(e);
-	return n || (n = (0, _.createRoot)(e), b.set(e, n)), n.render(/* @__PURE__ */ (0, c.jsx)(y, { brand: t })), () => S(e);
+var y = /* @__PURE__ */ new WeakMap();
+function b(e, t = "range-rover", n = {
+	socialLinks: [],
+	footerLinks: [],
+	disclaimers: [],
+	legalLines: []
+}) {
+	let r = y.get(e);
+	return r || (r = (0, _.createRoot)(e), y.set(e, r)), r.render(/* @__PURE__ */ (0, c.jsx)(v, {
+		brand: t,
+		content: n
+	})), () => x(e);
 }
-function S(e) {
-	let t = b.get(e);
-	t && (t.unmount(), b.delete(e));
+function x(e) {
+	let t = y.get(e);
+	t && (t.unmount(), y.delete(e));
 }
 //#endregion
-export { x as mountFooter, S as unmountFooter };
+export { b as mountFooter, x as unmountFooter };

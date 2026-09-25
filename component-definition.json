@@ -251,6 +251,17 @@
           }
         },
         {
+          "title": "Vehicle Detail",
+          "id": "vehicle-detail",
+          "plugins": {
+            "da": {
+              "name": "vehicle-detail",
+              "rows": 1,
+              "columns": 1
+            }
+          }
+        },
+        {
           "title": "JLR Sample",
           "id": "jlr-sample",
           "plugins": {
