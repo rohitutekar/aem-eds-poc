@@ -1,11 +1,12 @@
-import { a as e, lt as t, st as n } from "./src-CgYYaxWK.js";
-import { t as r } from "./Button-DEkIjh0g.js";
-import { n as i, r as a, t as o } from "./Text-Ddgjd6nl.js";
+import { t as e } from "./jsx-runtime-CvRU0VyQ.js";
+import { a as t, ut as n } from "./src-aGDJs71C.js";
+import { t as r } from "./Button-BXgO-PT2.js";
+import { n as i, r as a, t as o } from "./Text-GMz7IwT6.js";
 //#region src/App.tsx
-var s = t(), c = n();
-function l({ brand: t = "range-rover" }) {
-	return /* @__PURE__ */ (0, c.jsx)(e, {
-		brand: t,
+var s = n(), c = e();
+function l({ brand: e = "range-rover" }) {
+	return /* @__PURE__ */ (0, c.jsx)(t, {
+		brand: e,
 		children: /* @__PURE__ */ (0, c.jsxs)("div", {
 			className: "bg-surface text-text-primary flex flex-col gap-4 p-6",
 			children: [

@@ -1,6 +1,7 @@
-import { a as e, dt as t, lt as n, pt as r, r as i, st as a, t as o } from "./src-CgYYaxWK.js";
+import { i as e, n as t, t as n } from "./jsx-runtime-CvRU0VyQ.js";
+import { a as r, r as i, t as a, ut as o } from "./src-aGDJs71C.js";
 //#region ../../packages/icons/src/custom/social/Facebook.tsx
-var s = /* @__PURE__ */ r(t(), 1), c = a(), l = (0, s.forwardRef)(function({ className: e, width: t = 24, height: n = 24, ...r }, i) {
+var s = /* @__PURE__ */ e(t(), 1), c = n(), l = (0, s.forwardRef)(function({ className: e, width: t = 24, height: n = 24, ...r }, i) {
 	return /* @__PURE__ */ (0, c.jsx)("svg", {
 		ref: i,
 		xmlns: "http://www.w3.org/2000/svg",
@@ -122,7 +123,7 @@ function g({ content: e }) {
 		let n = e.replace(/&copy;|&#169;/gi, "©");
 		return /©|copyright/i.test(n) ? n.replace(/\b(19|20)\d{2}\b/, String(t)) : n;
 	}
-	let r = e.disclaimers.length > 0, a = e.socialLinks.length > 0, s = e.footerLinks.length > 0, l = e.legalLines.length > 0;
+	let r = e.disclaimers.length > 0, o = e.socialLinks.length > 0, s = e.footerLinks.length > 0, l = e.legalLines.length > 0;
 	return /* @__PURE__ */ (0, c.jsxs)(c.Fragment, { children: [r && /* @__PURE__ */ (0, c.jsx)("div", {
 		"data-testid": "footer-disclaimer",
 		id: "footer-disclaimer",
@@ -137,13 +138,13 @@ function g({ content: e }) {
 	}), /* @__PURE__ */ (0, c.jsxs)("footer", {
 		className: "footer-shell pt-10 pb-20 flex flex-col gap-10",
 		children: [
-			a && /* @__PURE__ */ (0, c.jsxs)(c.Fragment, { children: [/* @__PURE__ */ (0, c.jsx)("nav", {
+			o && /* @__PURE__ */ (0, c.jsxs)(c.Fragment, { children: [/* @__PURE__ */ (0, c.jsx)("nav", {
 				"aria-label": "Social links",
 				"data-testid": "footer-social-links",
 				className: "layout-container",
 				children: /* @__PURE__ */ (0, c.jsx)("div", {
 					className: "flex flex-wrap gap-4 lg:gap-10",
-					children: e.socialLinks.map((e) => /* @__PURE__ */ (0, c.jsxs)(o, {
+					children: e.socialLinks.map((e) => /* @__PURE__ */ (0, c.jsxs)(a, {
 						href: e.url,
 						variant: "standalone",
 						target: "_blank",
@@ -173,7 +174,7 @@ function g({ content: e }) {
 				className: "layout-container uppercase",
 				children: /* @__PURE__ */ (0, c.jsx)("ul", {
 					className: "flex flex-wrap flex-col md:flex-row gap-5 md:gap-6",
-					children: e.footerLinks.map((e) => /* @__PURE__ */ (0, c.jsx)("li", { children: /* @__PURE__ */ (0, c.jsx)(o, {
+					children: e.footerLinks.map((e) => /* @__PURE__ */ (0, c.jsx)("li", { children: /* @__PURE__ */ (0, c.jsx)(a, {
 						href: e.url,
 						variant: "standalone",
 						target: "_blank",
@@ -195,11 +196,11 @@ function g({ content: e }) {
 }
 //#endregion
 //#region src/mount-footer.tsx
-var _ = n();
-function v({ brand: t, content: n }) {
-	return /* @__PURE__ */ (0, c.jsx)(e, {
-		brand: t,
-		children: /* @__PURE__ */ (0, c.jsx)(g, { content: n })
+var _ = o();
+function v({ brand: e, content: t }) {
+	return /* @__PURE__ */ (0, c.jsx)(r, {
+		brand: e,
+		children: /* @__PURE__ */ (0, c.jsx)(g, { content: t })
 	});
 }
 var y = /* @__PURE__ */ new WeakMap();

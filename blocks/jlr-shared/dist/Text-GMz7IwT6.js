@@ -1,4 +1,5 @@
-import { ct as e, i as t, st as n } from "./src-CgYYaxWK.js";
+import { t as e } from "./jsx-runtime-CvRU0VyQ.js";
+import { i as t, lt as n } from "./src-aGDJs71C.js";
 //#region ../../packages/ui-react/src/components/internal/Tone/tone.variants.ts
 var r = {
 	neutral: "",
@@ -96,13 +97,13 @@ var r = {
 		size: "sm",
 		variant: "soft"
 	}
-}), s = n();
-function c({ tone: t, size: n, variant: r, className: i, children: a, ref: c, ...l }) {
+}), s = e();
+function c({ tone: e, size: t, variant: r, className: i, children: a, ref: c, ...l }) {
 	return /* @__PURE__ */ (0, s.jsx)("span", {
 		ref: c,
-		className: e(o({
-			tone: t,
-			size: n,
+		className: n(o({
+			tone: e,
+			size: t,
 			variant: r
 		}), i),
 		...l,
@@ -122,10 +123,10 @@ var l = t("font-heading", {
 });
 //#endregion
 //#region ../../packages/ui-react/src/components/primitives/Heading/Heading.tsx
-function u({ level: t = 2, variant: n, as: r, className: i, children: a, ref: o, ...c }) {
-	return /* @__PURE__ */ (0, s.jsx)(r ?? `h${t}`, {
+function u({ level: e = 2, variant: t, as: r, className: i, children: a, ref: o, ...c }) {
+	return /* @__PURE__ */ (0, s.jsx)(r ?? `h${e}`, {
 		ref: o,
-		className: e(l({ variant: n }), i),
+		className: n(l({ variant: t }), i),
 		...c,
 		children: a
 	});
@@ -164,11 +165,11 @@ var d = t("", {
 });
 //#endregion
 //#region ../../packages/ui-react/src/components/primitives/Text/Text.tsx
-function f({ as: t, variant: n, tone: r, weight: i, className: a, children: o, ref: c, ...l }) {
-	return /* @__PURE__ */ (0, s.jsx)(t ?? "p", {
+function f({ as: e, variant: t, tone: r, weight: i, className: a, children: o, ref: c, ...l }) {
+	return /* @__PURE__ */ (0, s.jsx)(e ?? "p", {
 		ref: c,
-		className: e(d({
-			variant: n,
+		className: n(d({
+			variant: t,
 			tone: r,
 			weight: i
 		}), a),

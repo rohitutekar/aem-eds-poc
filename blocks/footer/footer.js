@@ -9,14 +9,6 @@ function getSections(fragment) {
   return sections.length ? sections : [...fragment.children];
 }
 
-function getContentSection(fragment, name) {
-  const sectionName = name.toLowerCase();
-  return getSections(fragment).find((section) => {
-    const heading = section.querySelector('h1, h2, h3, h4, h5, h6');
-    return heading?.textContent.trim().toLowerCase() === sectionName;
-  });
-}
-
 function parseLinks(section) {
   return section
     ? [...section.querySelectorAll('a[href]')].map((link) => ({
@@ -43,39 +35,52 @@ function parseLines(section) {
   return section ? [...section.querySelectorAll('p')].map((line) => line.textContent.trim()).filter(Boolean) : [];
 }
 
-function parseFooterContent(fragment) {
-  const socialSection = getContentSection(fragment, 'social links');
-  const footerSection = getContentSection(fragment, 'footer links');
-  const disclaimerSection = getContentSection(fragment, 'disclaimers');
-  const legalSection = getContentSection(fragment, 'legal');
+const SOCIAL_IDS = new Set(['instagram', 'tiktok', 'facebook', 'youtube', 'x']);
 
-  if (socialSection || footerSection || disclaimerSection || legalSection) {
-    return {
-      socialLinks: parseLinks(socialSection),
-      footerLinks: parseLinks(footerSection),
-      disclaimers: parseDisclaimers(disclaimerSection),
-      legalLines: parseLines(legalSection),
-    };
+function sectionHeading(section) {
+  return section.querySelector('h1, h2, h3, h4, h5, h6')?.textContent.trim().toLowerCase();
+}
+
+function sectionParagraphs(section) {
+  return [...section.querySelectorAll('p')];
+}
+
+function addUnheadedSection(section, content) {
+  const links = parseLinks(section);
+  const paragraphs = sectionParagraphs(section);
+  const linkIds = links.map((link) => link.id);
+  const text = section.textContent.toLowerCase();
+  const hasDisclaimerMarker = paragraphs.some((paragraph) => /^(\*1|\*{1,2})\s*/.test(paragraph.textContent.trim()));
+
+  if (links.length && linkIds.every((id) => SOCIAL_IDS.has(id))) {
+    content.socialLinks.push(...links);
+  } else if (links.length) {
+    content.footerLinks.push(...links);
+  } else if (hasDisclaimerMarker || /wltp|disclaimer|equivalent all electric|images shown/.test(text)) {
+    content.disclaimers.push(...parseDisclaimers(section));
+  } else if (paragraphs.length) {
+    content.legalLines.push(...parseLines(section));
   }
+}
 
-  const paragraphs = [...fragment.querySelectorAll('p')];
-  const disclaimers = paragraphs
-    .map((paragraph) => paragraph.textContent.trim())
-    .map((text) => {
-      const match = text.match(/^(\*1|\*{1,2})\s*/);
-      return match ? { marker: match[1], text: text.slice(match[0].length) } : null;
-    })
-    .filter(Boolean);
-
-  return {
+function parseFooterContent(fragment) {
+  const content = {
     socialLinks: [],
-    footerLinks: parseLinks(fragment),
-    disclaimers,
-    legalLines: paragraphs
-      .filter((paragraph) => !paragraph.querySelector('a') && !/^(\*1|\*{1,2})\s*/.test(paragraph.textContent.trim()))
-      .map((paragraph) => paragraph.textContent.trim())
-      .filter(Boolean),
+    footerLinks: [],
+    disclaimers: [],
+    legalLines: [],
   };
+
+  getSections(fragment).forEach((section) => {
+    const heading = sectionHeading(section);
+    if (heading === 'social links') content.socialLinks.push(...parseLinks(section));
+    else if (heading === 'footer links') content.footerLinks.push(...parseLinks(section));
+    else if (heading === 'disclaimers') content.disclaimers.push(...parseDisclaimers(section));
+    else if (heading === 'legal') content.legalLines.push(...parseLines(section));
+    else addUnheadedSection(section, content);
+  });
+
+  return content;
 }
 
 /**

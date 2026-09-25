@@ -1,8 +1,9 @@
-import { a as e, dt as t, lt as n, pt as r, st as i } from "./src-CgYYaxWK.js";
-import { t as a } from "./Button-DEkIjh0g.js";
-import { n as o, r as s, t as c } from "./Text-Ddgjd6nl.js";
+import { i as e, n as t, t as n } from "./jsx-runtime-CvRU0VyQ.js";
+import { a as r, ut as i } from "./src-aGDJs71C.js";
+import { t as a } from "./Button-BXgO-PT2.js";
+import { n as o, r as s, t as c } from "./Text-GMz7IwT6.js";
 //#region src/mount-vehicle-detail.tsx
-var l = /* @__PURE__ */ r(t(), 1), u = n(), d = i();
+var l = /* @__PURE__ */ e(t(), 1), u = i(), d = n();
 function f() {
 	return (window.JLR_PUBLIC_VEHICLE_API_ORIGIN ?? "http://localhost:8787").replace(/\/$/, "");
 }
@@ -97,15 +98,15 @@ function h({ vehicleId: e, brand: t }) {
 	});
 }
 var g = /* @__PURE__ */ new WeakMap();
-function _(t, n = p(), r = "range-rover") {
-	let i = g.get(t);
-	return i || (i = (0, u.createRoot)(t), g.set(t, i)), i.render(/* @__PURE__ */ (0, d.jsx)(e, {
-		brand: r,
+function _(e, t = p(), n = "range-rover") {
+	let i = g.get(e);
+	return i || (i = (0, u.createRoot)(e), g.set(e, i)), i.render(/* @__PURE__ */ (0, d.jsx)(r, {
+		brand: n,
 		children: /* @__PURE__ */ (0, d.jsx)(h, {
-			vehicleId: n,
-			brand: r
+			vehicleId: t,
+			brand: n
 		})
-	})), () => v(t);
+	})), () => v(e);
 }
 function v(e) {
 	let t = g.get(e);
