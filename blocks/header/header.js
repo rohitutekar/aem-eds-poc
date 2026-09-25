@@ -10,19 +10,31 @@ function getSections(fragment) {
   return sections.length ? sections : [...fragment.children];
 }
 
-function getSection(fragment, name) {
-  const expectedName = name.toLowerCase();
-  return getSections(fragment).find((section) => (
-    section.querySelector('h1, h2, h3, h4, h5, h6')?.textContent.trim().toLowerCase() === expectedName
-  ));
-}
-
 function parseLinks(section) {
   return section ? [...section.querySelectorAll('a[href]')].map((link) => ({
     id: toId(link.textContent),
     label: link.textContent.trim(),
     href: new URL(link.getAttribute('href'), window.location).pathname,
   })).filter((link) => link.label) : [];
+}
+
+const BRAND_IDS = new Set(['jaguar', 'range-rover', 'discovery']);
+
+function addNavSection(section, content) {
+  const links = parseLinks(section);
+  const linkIds = links.map((link) => link.id);
+
+  if (links.length && links.every((link) => link.href.includes('/vehicle-listing/'))) {
+    content.contextNavigation.push(...links.map((link) => ({ ...link, kind: 'link' })));
+  } else if (links.length === 1 && linkIds[0] === 'range-rover' && links[0].href === '/') {
+    content.logoHref = links[0].href;
+  } else if (links.length && linkIds.every((id) => BRAND_IDS.has(id))) {
+    content.brands.push(...linkIds);
+  } else if (links.length && linkIds.every((id) => /^[a-z]{2}(-[a-z]{2})?$/.test(id))) {
+    content.languages.push(...links);
+  } else {
+    content.otherLinks.push(...links);
+  }
 }
 
 function parseNavContent(fragment) {
@@ -35,23 +47,26 @@ function parseNavContent(fragment) {
     };
   }
 
-  const contextNavigation = parseLinks(getSection(fragment, 'context navigation'))
-    .map((link) => ({ ...link, kind: 'link' }));
-  const logoLinks = parseLinks(getSection(fragment, 'logo'));
-  const brandLinks = parseLinks(getSection(fragment, 'brand switcher'));
-  const otherLinks = parseLinks(getSection(fragment, 'other links'));
-  const languages = parseLinks(getSection(fragment, 'language switcher'));
-  const brands = brandLinks
-    .map((link) => link.id)
-    .filter((id) => ['jaguar', 'range-rover', 'discovery'].includes(id));
-
-  return {
-    contextNavigation,
-    logoHref: logoLinks[0]?.href,
-    brands,
-    otherLinks,
-    languages,
+  const content = {
+    contextNavigation: [],
+    logoHref: undefined,
+    brands: [],
+    otherLinks: [],
+    languages: [],
   };
+
+  getSections(fragment).forEach((section) => {
+    const heading = section.querySelector('h1, h2, h3, h4, h5, h6')?.textContent.trim().toLowerCase();
+    const links = parseLinks(section);
+    if (heading === 'context navigation') content.contextNavigation.push(...links.map((link) => ({ ...link, kind: 'link' })));
+    else if (heading === 'logo') content.logoHref = links[0]?.href;
+    else if (heading === 'brand switcher') content.brands.push(...links.map((link) => link.id).filter((id) => BRAND_IDS.has(id)));
+    else if (heading === 'other links') content.otherLinks.push(...links);
+    else if (heading === 'language switcher') content.languages.push(...links);
+    else addNavSection(section, content);
+  });
+
+  return content;
 }
 /**
  * Mounts the shared @jlr/ui-react Header, replacing the boilerplate's
