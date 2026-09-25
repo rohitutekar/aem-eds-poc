@@ -1,4 +1,5 @@
-import { getMetadata, loadFragment } from '../../scripts/aem.js';
+import { getMetadata } from '../../scripts/aem.js';
+import { loadFragment } from '../fragment/fragment.js';
 
 function toId(value) {
   return value.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
