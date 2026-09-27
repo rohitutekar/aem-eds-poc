@@ -3,6 +3,7 @@
     {
       "title": "JLR Sample",
       "id": "jlr-sample",
+      "model": "jlr-sample",
       "plugins": {
         "da": {
           "name": "jlr-sample",

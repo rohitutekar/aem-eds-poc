@@ -3,6 +3,7 @@
     {
       "title": "Vehicle Detail",
       "id": "vehicle-detail",
+      "model": "vehicle-detail",
       "plugins": {
         "da": {
           "name": "vehicle-detail",

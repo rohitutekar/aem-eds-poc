@@ -3,6 +3,7 @@
     {
       "title": "Vehicle List",
       "id": "vehicle-list",
+      "model": "vehicle-list",
       "plugins": {
         "da": {
           "name": "vehicle-list",

@@ -253,6 +253,7 @@
         {
           "title": "JLR Sample",
           "id": "jlr-sample",
+          "model": "jlr-sample",
           "plugins": {
             "da": {
               "name": "jlr-sample",
@@ -360,6 +361,7 @@
         {
           "title": "Vehicle Detail",
           "id": "vehicle-detail",
+          "model": "vehicle-detail",
           "plugins": {
             "da": {
               "name": "vehicle-detail",
@@ -371,6 +373,7 @@
         {
           "title": "Vehicle List",
           "id": "vehicle-list",
+          "model": "vehicle-list",
           "plugins": {
             "da": {
               "name": "vehicle-list",
