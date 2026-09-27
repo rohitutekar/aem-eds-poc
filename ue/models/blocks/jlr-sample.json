@@ -1,0 +1,17 @@
+{
+  "definitions": [
+    {
+      "title": "JLR Sample",
+      "id": "jlr-sample",
+      "plugins": {
+        "da": {
+          "name": "jlr-sample",
+          "rows": 1,
+          "columns": 1
+        }
+      }
+    }
+  ],
+  "models": [],
+  "filters": []
+}

@@ -43,11 +43,14 @@
         "form",
         "hero",
         "image",
+        "jlr-sample",
         "quote",
         "search",
         "tabs",
         "table",
         "text",
+        "vehicle-detail",
+        "vehicle-list",
         "video",
         "product-recommendations"
       ]
