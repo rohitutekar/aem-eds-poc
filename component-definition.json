@@ -262,6 +262,17 @@
           }
         },
         {
+          "title": "Vehicle List",
+          "id": "vehicle-list",
+          "plugins": {
+            "da": {
+              "name": "vehicle-list",
+              "rows": 1,
+              "columns": 1
+            }
+          }
+        },
+        {
           "title": "JLR Sample",
           "id": "jlr-sample",
           "plugins": {

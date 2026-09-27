@@ -5,7 +5,7 @@ import { n as o, r as s, t as c } from "./Text-GMz7IwT6.js";
 //#region src/mount-vehicle-detail.tsx
 var l = /* @__PURE__ */ e(t(), 1), u = i(), d = n();
 function f() {
-	return (window.JLR_PUBLIC_VEHICLE_API_ORIGIN ?? "http://localhost:8787").replace(/\/$/, "");
+	return window.JLR_PUBLIC_VEHICLE_API_ORIGIN?.replace(/\/$/, "");
 }
 function p() {
 	let e = window.location.pathname.split("/").filter(Boolean);
@@ -17,24 +17,66 @@ function m(e, t) {
 		currency: t
 	}).format(e);
 }
-function h({ vehicleId: e, brand: t }) {
-	let [n, r] = (0, l.useState)(), [i, u] = (0, l.useState)(), [p, h] = (0, l.useState)(!0), [g, _] = (0, l.useState)(0);
+function h(e, t) {
+	return {
+		vehicleId: `vehicle-${e.id}`,
+		brand: t,
+		title: e.title,
+		condition: e.availabilityStatus ?? "Demo data",
+		price: e.price,
+		currency: "USD",
+		image: e.thumbnail,
+		specifications: [
+			{
+				label: "Category",
+				value: e.category
+			},
+			{
+				label: "Brand",
+				value: e.brand ?? "Unspecified"
+			},
+			{
+				label: "Stock",
+				value: String(e.stock)
+			},
+			{
+				label: "Rating",
+				value: String(e.rating)
+			}
+		],
+		updatedAt: e.meta?.updatedAt ?? (/* @__PURE__ */ new Date()).toISOString()
+	};
+}
+async function g(e, t, n) {
+	let r = f();
+	if (r) {
+		let i = new URL(`${r}/v1/vehicles/${encodeURIComponent(e)}`);
+		i.searchParams.set("brand", t), i.searchParams.set("locale", "en-GB"), i.searchParams.set("condition", "new");
+		let a = await fetch(i, { signal: n }), o = await a.json();
+		if (!a.ok) throw o;
+		return o;
+	}
+	let i = e.match(/\d+$/)?.[0] ?? "1", a = await fetch(`https://dummyjson.com/products/${i}`, { signal: n });
+	if (!a.ok) throw { error: {
+		code: a.status === 404 ? "VEHICLE_NOT_FOUND" : "DEMO_API_ERROR",
+		message: "Dynamic demo data could not be loaded"
+	} };
+	return h(await a.json(), t);
+}
+function _({ vehicleId: e, brand: t }) {
+	let [n, r] = (0, l.useState)(), [i, u] = (0, l.useState)(), [f, p] = (0, l.useState)(!0), [h, _] = (0, l.useState)(0);
 	if ((0, l.useEffect)(() => {
-		let n = new AbortController(), i = new URL(`${f()}/v1/vehicles/${encodeURIComponent(e)}`);
-		return i.searchParams.set("brand", t), i.searchParams.set("locale", "en-GB"), i.searchParams.set("condition", "new"), h(!0), u(void 0), fetch(i, { signal: n.signal }).then(async (e) => {
-			let t = await e.json();
-			if (!e.ok) throw t;
-			return t;
-		}).then((e) => r(e)).catch((e) => {
+		let n = new AbortController();
+		return p(!0), u(void 0), g(e, t, n.signal).then((e) => r(e)).catch((e) => {
 			n.signal.aborted || u(e);
 		}).finally(() => {
-			n.signal.aborted || h(!1);
+			n.signal.aborted || p(!1);
 		}), () => n.abort();
 	}, [
 		t,
-		g,
+		h,
 		e
-	]), p) return /* @__PURE__ */ (0, d.jsx)(c, { children: "Loading vehicle details..." });
+	]), f) return /* @__PURE__ */ (0, d.jsx)(c, { children: "Loading vehicle details..." });
 	if (i || !n) {
 		let t = i?.error?.code === "VEHICLE_NOT_FOUND";
 		return /* @__PURE__ */ (0, d.jsxs)("div", {
@@ -97,20 +139,20 @@ function h({ vehicleId: e, brand: t }) {
 		})]
 	});
 }
-var g = /* @__PURE__ */ new WeakMap();
-function _(e, t = p(), n = "range-rover") {
-	let i = g.get(e);
-	return i || (i = (0, u.createRoot)(e), g.set(e, i)), i.render(/* @__PURE__ */ (0, d.jsx)(r, {
+var v = /* @__PURE__ */ new WeakMap();
+function y(e, t = p(), n = "range-rover") {
+	let i = v.get(e);
+	return i || (i = (0, u.createRoot)(e), v.set(e, i)), i.render(/* @__PURE__ */ (0, d.jsx)(r, {
 		brand: n,
-		children: /* @__PURE__ */ (0, d.jsx)(h, {
+		children: /* @__PURE__ */ (0, d.jsx)(_, {
 			vehicleId: t,
 			brand: n
 		})
-	})), () => v(e);
+	})), () => b(e);
 }
-function v(e) {
-	let t = g.get(e);
-	t && (t.unmount(), g.delete(e));
+function b(e) {
+	let t = v.get(e);
+	t && (t.unmount(), v.delete(e));
 }
 //#endregion
-export { _ as mountVehicleDetail, v as unmountVehicleDetail };
+export { y as mountVehicleDetail, b as unmountVehicleDetail };
