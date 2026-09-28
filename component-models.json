@@ -251,6 +251,21 @@
     ]
   },
   {
+    "id": "vehicle-list",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading"
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description"
+      }
+    ]
+  },
+  {
     "id": "video",
     "fields": [
       {

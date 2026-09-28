@@ -376,9 +376,17 @@
           "model": "vehicle-list",
           "plugins": {
             "da": {
-              "name": "vehicle-list",
-              "rows": 1,
-              "columns": 1
+              "unsafeHTML": "<div class=\"vehicle-list\"><div><div>heading</div><div></div></div><div><div>description</div><div></div></div></div>",
+              "fields": [
+                {
+                  "name": "heading",
+                  "selector": "div:nth-child(1)>div:nth-child(2)"
+                },
+                {
+                  "name": "description",
+                  "selector": "div:nth-child(2)>div:nth-child(2)"
+                }
+              ]
             }
           }
         },

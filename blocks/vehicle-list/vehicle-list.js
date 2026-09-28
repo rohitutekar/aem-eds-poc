@@ -5,14 +5,13 @@
  */
 export default async function decorate(block) {
   const { mountVehicleList } = await import('../jlr-shared/dist/vehicle-list.js');
-  const authoredValues = [...block.children]
-    .flatMap((row) => [...row.children])
-    .map((cell) => cell.textContent.trim())
-    .filter(Boolean);
-  const content = {
-    heading: authoredValues[0],
-    description: authoredValues[1],
-  };
+  const content = [...block.children].reduce((values, row) => {
+    const [keyCell, valueCell] = [...row.children];
+    const key = keyCell?.textContent.trim().toLowerCase();
+    const value = valueCell?.textContent.trim();
+    if (key === 'heading' || key === 'description') values[key] = value;
+    return values;
+  }, {});
   const container = document.createElement('div');
   container.className = 'jlr-ds-root';
   block.replaceChildren(container);
