@@ -5,8 +5,16 @@
  */
 export default async function decorate(block) {
   const { mountVehicleList } = await import('../jlr-shared/dist/vehicle-list.js');
+  const authoredValues = [...block.children]
+    .flatMap((row) => [...row.children])
+    .map((cell) => cell.textContent.trim())
+    .filter(Boolean);
+  const content = {
+    heading: authoredValues[0],
+    description: authoredValues[1],
+  };
   const container = document.createElement('div');
   container.className = 'jlr-ds-root';
   block.replaceChildren(container);
-  mountVehicleList(container);
+  mountVehicleList(container, 'range-rover', content);
 }

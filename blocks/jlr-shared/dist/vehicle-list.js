@@ -56,22 +56,22 @@ function _(e, t) {
 		currency: t
 	}).format(e);
 }
-function v({ brand: e }) {
-	let [t, n] = (0, l.useState)([]), [r, i] = (0, l.useState)(1), [u, f] = (0, l.useState)(0), [p, m] = (0, l.useState)(!0), [h, v] = (0, l.useState)(!1), [y, b] = (0, l.useState)(0);
+function v({ brand: e, content: t }) {
+	let [n, r] = (0, l.useState)([]), [i, u] = (0, l.useState)(1), [f, p] = (0, l.useState)(0), [m, h] = (0, l.useState)(!0), [v, y] = (0, l.useState)(!1), [b, x] = (0, l.useState)(0);
 	return (0, l.useEffect)(() => {
 		let t = new AbortController();
-		return m(!0), v(!1), g(r, e, t.signal).then((e) => {
-			n((t) => r === 1 ? e.items : [...t, ...e.items]), f(e.total);
+		return h(!0), y(!1), g(i, e, t.signal).then((e) => {
+			r((t) => i === 1 ? e.items : [...t, ...e.items]), p(e.total);
 		}).catch(() => {
-			t.signal.aborted || v(!0);
+			t.signal.aborted || y(!0);
 		}).finally(() => {
-			t.signal.aborted || m(!1);
+			t.signal.aborted || h(!1);
 		}), () => t.abort();
 	}, [
 		e,
-		r,
-		y
-	]), h && t.length === 0 ? /* @__PURE__ */ (0, d.jsxs)("div", {
+		i,
+		b
+	]), v && n.length === 0 ? /* @__PURE__ */ (0, d.jsxs)("div", {
 		className: "flex flex-col items-start gap-4",
 		children: [
 			/* @__PURE__ */ (0, d.jsx)(o, {
@@ -85,31 +85,31 @@ function v({ brand: e }) {
 			/* @__PURE__ */ (0, d.jsx)(a, {
 				variant: "secondary",
 				size: "sm",
-				onPress: () => b((e) => e + 1),
+				onPress: () => x((e) => e + 1),
 				children: "Retry"
 			})
 		]
 	}) : /* @__PURE__ */ (0, d.jsxs)("section", {
 		className: "flex flex-col gap-6",
-		"aria-busy": p,
+		"aria-busy": m,
 		children: [
 			/* @__PURE__ */ (0, d.jsxs)("div", {
 				className: "flex items-end justify-between gap-4",
-				children: [/* @__PURE__ */ (0, d.jsxs)("div", { children: [/* @__PURE__ */ (0, d.jsx)(o, {
+				children: [/* @__PURE__ */ (0, d.jsxs)("div", { children: [t.heading ? /* @__PURE__ */ (0, d.jsx)(o, {
 					level: 2,
-					children: "Available vehicles"
-				}), /* @__PURE__ */ (0, d.jsx)(c, {
+					children: t.heading
+				}) : null, t.description ? /* @__PURE__ */ (0, d.jsx)(c, {
 					tone: "muted",
-					children: "Loaded asynchronously from a public demo API."
-				})] }), u > 0 ? /* @__PURE__ */ (0, d.jsxs)(c, {
+					children: t.description
+				}) : null] }), f > 0 ? /* @__PURE__ */ (0, d.jsxs)(c, {
 					tone: "muted",
-					children: [u, " results"]
+					children: [f, " results"]
 				}) : null]
 			}),
-			p && t.length === 0 ? /* @__PURE__ */ (0, d.jsx)(c, { children: "Loading vehicle cards..." }) : null,
+			m && n.length === 0 ? /* @__PURE__ */ (0, d.jsx)(c, { children: "Loading vehicle cards..." }) : null,
 			/* @__PURE__ */ (0, d.jsx)("div", {
 				className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-				children: t.map((e) => /* @__PURE__ */ (0, d.jsxs)("article", {
+				children: n.map((e) => /* @__PURE__ */ (0, d.jsxs)("article", {
 					className: "border border-border-subtle bg-surface flex flex-col",
 					children: [/* @__PURE__ */ (0, d.jsx)("img", {
 						className: "w-full aspect-[4/3] object-cover",
@@ -142,15 +142,15 @@ function v({ brand: e }) {
 					})]
 				}, e.vehicleId))
 			}),
-			h ? /* @__PURE__ */ (0, d.jsx)(c, {
+			v ? /* @__PURE__ */ (0, d.jsx)(c, {
 				tone: "critical",
 				children: "The next page could not be loaded."
 			}) : null,
-			t.length < u ? /* @__PURE__ */ (0, d.jsx)(a, {
+			n.length < f ? /* @__PURE__ */ (0, d.jsx)(a, {
 				variant: "secondary",
 				size: "sm",
-				isLoading: p,
-				onPress: () => i((e) => e + 1),
+				isLoading: m,
+				onPress: () => u((e) => e + 1),
 				className: "self-start",
 				children: "Load more"
 			}) : null
@@ -158,11 +158,14 @@ function v({ brand: e }) {
 	});
 }
 var y = /* @__PURE__ */ new WeakMap();
-function b(e, t = "range-rover") {
-	let n = y.get(e);
-	return n || (n = (0, u.createRoot)(e), y.set(e, n)), n.render(/* @__PURE__ */ (0, d.jsx)(r, {
+function b(e, t = "range-rover", n = {}) {
+	let i = y.get(e);
+	return i || (i = (0, u.createRoot)(e), y.set(e, i)), i.render(/* @__PURE__ */ (0, d.jsx)(r, {
 		brand: t,
-		children: /* @__PURE__ */ (0, d.jsx)(v, { brand: t })
+		children: /* @__PURE__ */ (0, d.jsx)(v, {
+			brand: t,
+			content: n
+		})
 	})), () => x(e);
 }
 function x(e) {
